@@ -1,8 +1,24 @@
-.informBoxBoarder{
-  border-bottom: solid 2px;
-  border-left: solid 2px;
-  border-right: solid 2px;
-  border-top: solid 2px;
-  width: 300px;
-  border-color: cornflowerblue;
+.background {
+  height: 100%;
+  margin: auto;
+}
+.loginBox {
+  position: relative;
+  background-color: white;
+  justify-content: center;
+  height: 400px;
+  width: 400px;
+  padding: 55px 55px;
+  top:40%;
+  left: 48%;
+  transform: translate(-40%, -48%);
+}
+.inputBox {
+  height: 55px;
+  margin-bottom: 20px;
+}
+button {
+  height: 55px;
+  margin-bottom: 10px;
+  margin-right: 20px;
 }

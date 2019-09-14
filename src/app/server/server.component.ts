@@ -8,37 +8,42 @@ import { Student } from '../../shared/student.model';
   styleUrls: ['./server.component.css']
 })
 export class ServerComponent {
-    serverId = 10;
-    serverStatus = 'offLine';
-    counter = 0;
-    isLogin = false;
-    userName: string;
-    students: Student[] = [new Student('Bill Gates', 'Computer Science'),
-                           new Student('Steve Jobs', 'Computer Science'),
-                           new Student('Elon Musk', 'Computer Science')];
-
-    getServerStatus() {
-      return this.serverStatus;
+    meat: string;
+    vegetable: string;
+    message = '';
+    isValidMeat() {
+      if (this.meat === 'beef' || this.meat === 'pork' ||
+        this.meat === 'chicken' || this.meat === 'fish' ||
+        this.meat === 'lamb' ) {
+        return true;
+      }
+      return false;
     }
-
-    counterPlus() {
-     this.counter ++;
+    isValidVegetable() {
+      if (this.vegetable === 'tomato' || this.vegetable === 'potato' ||
+        this.vegetable === 'cabbage' || this.vegetable === 'lettuce') {
+        return true;
+      }
+      return false;
     }
-
-    resetCounter() {
-      this.counter = 0;
+    cook() {
+      if (this.meat == '' && this.isValidVegetable()) {
+        this.message = this.vegetable + ' salad';
+        return;
+      }
+      if (this.isValidMeat() && this.vegetable == '') {
+        this.message = 'fried ' + this.meat;
+        return;
+      }
+      if(this.isValidMeat() && this.isValidVegetable()) {
+        this.message = 'fried ' + this.meat + ' and ' + this.vegetable;
+        return;
+      }
+      this.message = 'you created dark matter!';
     }
-
-    login() {
-      this.isLogin = true;
-    }
-
-    signOut() {
-      this.isLogin = false;
-    }
-
-    // Event Binding
-    onUpdateUserName(event: Event) {
-      this.userName = (<HTMLInputElement>event.target).value;
+    reset() {
+      this.meat = '';
+      this.vegetable = '';
+      this.message = '';
     }
 }
